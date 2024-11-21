@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  .tooltip {
+    @apply invisible absolute left-1/2 bottom-full -translate-x-1/2 w-48 p-2 mb-1
+           bg-gray-900 text-white text-xs rounded-lg shadow-lg z-10 
+           group-hover:visible opacity-0 group-hover:opacity-100
+           transition-opacity duration-200;
+  }
+
+  .tooltip-arrow {
+    @apply absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 
+           w-2 h-2 bg-gray-900 rotate-45;
+  }
+
+  /* Custom scrollbar */
+  .overflow-y-auto {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.gray.300') theme('colors.gray.100');
+  }
+
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-gray-400 transition-colors;
+  }
+
+  /* Custom range input styling */
+  input[type='range'] {
+    @apply h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    @apply w-4 h-4 bg-indigo-600 rounded-full appearance-none cursor-pointer 
+           hover:bg-indigo-700 transition-colors;
+  }
+
+  input[type='range']::-moz-range-thumb {
+    @apply w-4 h-4 bg-indigo-600 rounded-full appearance-none cursor-pointer
+           hover:bg-indigo-700 transition-colors border-0;
+  }
+}
